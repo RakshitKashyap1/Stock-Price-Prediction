@@ -152,7 +152,7 @@ def compare_models(
         1  LSTM  0.816  0.667  0.663  0.700
     """
     if not results:
-        return pd.DataFrame(columns=["Model", "RMSE", "MAE", "MAPE", "R²"]).set_index("Model")
+        return pd.DataFrame(columns=["Model", "RMSE", "MAE", "MAPE", "R2"]).set_index("Model")
 
     rows = []
     for name, (y_true, y_pred) in results.items():
