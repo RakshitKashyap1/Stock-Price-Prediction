@@ -44,7 +44,7 @@ class TestRegressionMetrics:
         y_true = np.array([100, 102, 101])
         y_pred = np.array([99, 103, 100])
         d = RegressionMetrics(y_true, y_pred).to_dict()
-        for key in ["RMSE", "MAE", "MAPE", "R²"]:
+        for key in ["RMSE", "MAE", "MAPE", "R2"]:
             assert key in d
 
     def test_report_contains_metrics(self):
@@ -53,7 +53,7 @@ class TestRegressionMetrics:
         report = RegressionMetrics(y_true, y_pred).report()
         assert "RMSE" in report
         assert "MAE" in report
-        assert "R²" in report
+        assert "R^2" in report
 
     def test_float_inputs(self):
         y_true = [100.0, 102.0, 101.0]
