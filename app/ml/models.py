@@ -124,11 +124,11 @@ class LSTM:
         """
         model = models.Sequential(name="LSTM")
 
+        model.add(layers.Input(shape=(self.timesteps, self.n_features), name="input"))
         model.add(
             layers.LSTM(
                 50,
                 return_sequences=True,
-                input_shape=(self.timesteps, self.n_features),
                 name="lstm_1",
             )
         )
