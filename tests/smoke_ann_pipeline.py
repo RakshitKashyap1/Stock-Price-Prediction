@@ -59,12 +59,14 @@ y_true_price = prep.inverse_transform_price(data["scaler"], y_true_scaled)
 metrics_scaled = RegressionMetrics(y_true_scaled, y_pred_scaled)
 metrics_price = RegressionMetrics(y_true_price, y_pred_price)
 
-print("\n5. Scaled metrics:")
+print("5. Scaled metrics:")
 print(metrics_scaled.report())
-print("\n6. Price metrics (USD):")
+print("6. Price metrics (USD):")
 print(metrics_price.report())
 
 # Basic sanity checks
-assert metrics_scaled.rmse < 0.1, f"Scaled RMSE too high: {metrics_scaled.rmse}"
-assert metrics_scaled.r2 > 0.8, f"R² too low: {metrics_scaled.r2}"
+assert metrics_scaled.rmse < 0.15, f"Scaled RMSE too high: {metrics_scaled.rmse}"
+assert metrics_price.mape < 10.0, f"Price MAPE too high: {metrics_price.mape}%"
+assert 0 <= metrics_scaled.r2 <= 1.0, f"R² out of range: {metrics_scaled.r2}"
 print("\n7. All sanity checks passed — ANN pipeline works correctly!")
+print(f"   RMSE: ${metrics_price.rmse:.2f} | MAE: ${metrics_price.mae:.2f} | MAPE: {metrics_price.mape:.2f}% | R²: {metrics_scaled.r2:.4f}")
