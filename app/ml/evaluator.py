@@ -105,18 +105,18 @@ class RegressionMetrics:
             "RMSE": self.rmse,
             "MAE": self.mae,
             "MAPE": self.mape,
-            "R²": self.r2,
+            "R2": self.r2,
         }
 
     def report(self) -> str:
         """Return a human-readable multi-line report."""
         lines = [
-            "── Regression Metrics ──────────────────────",
+            "--- Regression Metrics ---",
             f"  RMSE:  {self.rmse:>{self.decimals + 4}.{self.decimals}f}",
             f"  MAE:   {self.mae:>{self.decimals + 4}.{self.decimals}f}",
             f"  MAPE:  {self.mape:>{self.decimals + 4}.{self.decimals}f} %",
-            f"  R²:    {self.r2:>{self.decimals + 4}.{self.decimals}f}",
-            "────────────────────────────────────────────",
+            f"  R^2:   {self.r2:>{self.decimals + 4}.{self.decimals}f}",
+            "--------------------------",
         ]
         return "\n".join(lines)
 
