@@ -151,6 +151,9 @@ def compare_models(
         0   ANN  1.290  1.000  0.996  0.250
         1  LSTM  0.816  0.667  0.663  0.700
     """
+    if not results:
+        return pd.DataFrame(columns=["Model", "RMSE", "MAE", "MAPE", "R²"]).set_index("Model")
+
     rows = []
     for name, (y_true, y_pred) in results.items():
         m = RegressionMetrics(y_true, y_pred, decimals=decimals)
